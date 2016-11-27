@@ -1,0 +1,158 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Energy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Styles -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/mycss.css" rel="stylesheet">
+    <link href="../css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="image/favicon.png">
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="../js/jquery.js"></script>
+
+    <script type="text/javascript" src="../js/compare.js"></script>
+    <script type="text/javascript" src="../js/canvasjs.js"></script>
+    <!-- Delete selection -->
+    <script>document.onselectstart = new Function("return false")</script>
+
+</head>
+<body>
+    <div class="sfondo"></div>
+
+    <div class="container">
+        <div class="row rowcontainer">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="panel panel-default compare">
+                    <div class="panel-body user_body">
+                        <h1>VS</h1>
+                        <img class="compare_img compare_sx" src="../images/emma.jpg"/>
+                        <img class="compare_img compare_dx" src="../images/tig.jpg"/>
+
+                         <div class="row">
+                            <div class="col-md-6">
+                                <h3 class="compare_sx">Emma Watson</h3>
+                            </div>
+                            <div class="col-md-6">
+                                <h3 class="compare_dx">Tig Trager</h3>
+                            </div>
+                        </div>
+
+                        
+                        <br><br>
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-10">
+                                <div class="panel panel-primary">
+                                    <div class="panel-body user_body">
+                                        <div id="linee_container" class="grafico"></div>
+                                        <div class="row">
+                                            <div class="col-md-2"></div>
+                                            <div class="col-md-8">
+                                                <div class="btn-group btn-group-justified" style="margin-left:8px" role="group" aria-label="...">
+                                                    <div class="btn-group" role="group" aria-label="...">
+                                                        <button type="button" class="btn btn-success active">Compensi</button>
+                                                    </div>
+                                                    <div class="btn-group" role="group" aria-label="...">
+                                                        <button type="button" class="btn btn-danger">Consumi</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-1"></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-5">
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <img class="icon" src="../images/check.png"/>
+                                        <h4>Consumo Totale</h4>
+                                        <p>100Kw</p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <img class="icon" src="../images/cross.png"/>
+                                        <h4>Compenso Totale</h4>
+                                        <p>10Kw</p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <img class="icon" src="../images/check.png"/>
+                                        <h4>Consumo Minore</h4>
+                                        <p>50Kw</p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <img class="icon" src="../images/cross.png"/>
+                                        <h4>Compenso Maggiore</h4>
+                                        <p>1Kw</p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <img class="icon" src="../images/cross.png"/>
+                                        <h4>Crediti</h4>
+                                        <p>1</p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <img class="icon" src="../images/check.png"/>
+                                        <h4>Ranking</h4>
+                                        <p>1</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-5 rightText">
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <img class="icon1" src="../images/cross.png"/>
+                                        <h4>Consumo Totale</h4>
+                                        <p>100Kw</p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <img class="icon1" src="../images/check.png"/>
+                                        <h4>Compenso Totale</h4>
+                                        <p>10Kw</p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <img class="icon1" src="../images/cross.png"/>
+                                        <h4>Consumo Minore</h4>
+                                        <p>50Kw</p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <img class="icon1" src="../images/check.png"/>
+                                        <h4>Compenso Maggiore</h4>
+                                        <p>1Kw</p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <img class="icon1" src="../images/check.png"/>
+                                        <h4>Crediti</h4>
+                                        <p>1</p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <img class="icon1" src="../images/cross.png"/>
+                                        <h4>Ranking</h4>
+                                        <p>1</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-1"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+
+    <!-- Loading the javaScript at the end of the page -->
+    <script type="text/javascript" src="../js/bootstrap.js"></script>
+
+</body>
+</html>

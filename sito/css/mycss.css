@@ -1,0 +1,315 @@
+
+body{
+	background: url("../images/sfondo.jpeg");
+}
+
+div.sfondo{
+	height: 700px;
+	opacity: 0.9;
+}
+
+div.user, div.compare{
+	margin-top: -550px;
+	-webkit-box-shadow: 1px 0px 5px 2px rgba(0,0,0,0.2);
+	-moz-box-shadow: 1px 0px 5px 2px rgba(0,0,0,0.2);
+	box-shadow: 1px 0px 5px 2px rgba(0,0,0,0.2);
+	background-color: #ecf0f1;
+	opacity: 100;
+}
+
+
+div.user h3{
+	margin-top: 0;
+	margin-left: 40px;
+}
+
+div.user h4.title{
+	margin: 5px;
+	text-align: center;
+}
+
+div.user_body{
+	height: 100%;
+	padding-top: 0;
+}
+
+div.user img.user{
+	width: 160px;
+	margin-top: -80px;
+	border-radius: 80px;
+	cursor: pointer;
+}
+
+div.torta{
+	margin-top: 60px;
+}
+
+img.arrow{
+	height: 40px;
+	float: left;
+	margin-right: 20px;
+}
+
+div.torta img.sun{
+	height: 60px;
+	float: left;
+	margin-right: 20px;
+}
+
+
+div.torta div.grafico{
+	height: 230px; 
+	margin-top: 10px;
+	width: 100%; 
+	float:left;
+	margin-right: 40px;
+}
+
+div.meteo{
+	float: right;
+	width: 37%;
+	height: 100%
+}
+
+div.hint{
+	margin-top: 60px;
+	height: 265px;
+	text-align: center;
+	border: none;
+	background-color: #ecf0f1;
+}
+
+div.hint img{
+	width: 50px;
+	margin-top: -20px;
+	margin-bottom: 10px;
+}
+
+div.hint p{
+	margin-top: 10px;
+}
+
+div.store{
+	position: relative;
+}
+
+div.store_body{
+	padding: 0;
+}
+
+a.canvasjs-chart-credit{
+	visibility: hidden;
+}
+
+div.postit {
+  position: relative;
+  padding: 40px;
+  background-color: #ffd42a;
+}
+div.postit:last-child {
+  margin-bottom: 0;
+}
+div.postit:before, div.postit:after {
+  display: block;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 0;
+  right: 0;
+  content: "";
+}
+div.postit:before {
+  border-top: solid 20px #ecf0f1;
+  border-right: solid 20px #ecf0f1;
+  border-left: solid 20px transparent;
+  border-bottom: solid 20px transparent;
+}
+div.postit:after {
+  border-bottom: solid 20px #f39c12;
+  border-left: solid 20px #f39c12;
+  border-right: solid 20px transparent;
+  border-top: solid 20px transparent;
+}
+
+.list-group a:hover, .list-group a:hover h4 {
+	color: #fff;
+}
+
+.centerText{
+	text-align: center;
+}
+
+.rightText{
+	text-align: right;
+}
+
+button.btn-success{
+	background-color: #2ecc71;
+}
+
+button.btn-danger{
+	background-color: #e74c3c;
+}
+
+div.utente img.arrow{
+	width:30px;
+	height:30px;
+	margin-right: 0;
+	float:none;
+}
+
+img.item{
+	width:30px;
+	height:30px;
+	float: left;
+	margin-right: 20px;
+}
+
+div.utente p.kw{
+	margin-top:10px;
+}
+
+
+a.utente{
+	height: 80px;
+}
+
+img.utente{
+	height: 60px;
+	border-radius:30px;
+	float: left;
+	margin-right: 20px;
+	margin-left: 20px;
+}
+
+div.modal img.user{
+	width: 160px;
+	border-radius: 80px;
+}
+
+div.compare img.compare_sx{
+	margin-left: 80px;
+}
+
+div.compare img.compare_dx{
+	margin-right: 80px;
+	float: right;
+}
+.compare_img {
+	width: 160px;
+	margin-top: -120px;
+	border-radius: 80px;
+	position: relative;
+}
+.compare_img:after {
+	position: absolute;
+	content: "culo";
+	width: 100%;
+	height:100%;
+	border-radius: 50%;
+	opacity: 1;
+	background: red;
+	z-index: 100;
+}
+div.compare h1{
+	text-align: center;
+}
+
+div.compare div.grafico{
+	height: 300px; 
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 40px;
+}
+
+div.compare img.icon{
+	height: 50px; 
+	height: 50px; 
+	margin-top: 10px;
+	float: right;
+}
+div.compare img.icon1{
+	height: 50px; 
+	height: 50px; 
+	margin-top: 10px;
+	float:left;
+}
+
+h3.compare_sx{
+	width: 100%;
+	margin-left: 100px;
+}
+
+h3.compare_dx{
+	width: 100%;
+	margin-right: 100px;
+	float: right;
+	text-align: right;
+}
+
+#owl-demo .item img{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.owl-pagination{
+	visibility: hidden;
+}
+
+.owl-buttons{
+	margin-top: -30px;
+}
+
+#f1_container {
+  position: relative;
+  margin: 10px auto;
+  width: 450px;
+  height: 80px;
+  z-index: 1;
+}
+#f1_container {
+  perspective: 1000;
+}
+#f1_card {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: all 1.0s linear;
+}
+#f1_container:hover #f1_card {
+  transform: rotateY(180deg);
+}
+.face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+.face.back {
+  display: block;
+  transform: rotateY(180deg);
+  box-sizing: border-box;
+  padding: 10px;
+  color: white;
+  text-align: center;
+}
+
+.container{
+	opacity: 0.9;
+}
+
+button.mybtn:hover{
+	background-color: #337ab7;
+	border-color: #337ab7;
+	color: #fff;
+};
+
+#settingsmodal label.color{
+	margin-left: 15px;
+	margin-top: 5px;
+}
+
+div.color_nogray{
+	 -webkit-filter: grayscale(0%);
+}

@@ -1,0 +1,525 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Energy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Styles -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/mycss.css" rel="stylesheet">
+    <link href="../css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="../css/owl.carousel.css" rel="stylesheet">
+    <link href="../css/owl.theme.css" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="image/favicon.png">
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="../js/jquery.js"></script>
+
+    <script type="text/javascript" src="../js/torta.js"></script>
+    <script type="text/javascript" src="../js/canvasjs.js"></script>
+    <script type="text/javascript" src="../js/owl.carousel.js"></script>
+    
+      <!--Endev-->
+    <script src="http://www.endevjs.org/endev.full.js"></script>
+
+    
+    <!-- Delete selection -->
+    <script>document.onselectstart = new Function("return false")</script>
+    <script type="text/javascript">
+        $(document).ready(main);
+
+            var main = function(){
+            $('#lista_utenti a').click(function(){
+                
+            alert("ok");
+              var chart = new CanvasJS.Chart("modal_torta_container",
+              {
+                title:{
+                  text: "",
+                  verticalAlign: 'top',
+                  horizontalAlign: 'left'
+                },
+                            animationEnabled: true,
+                data: [
+                {        
+                  type: "doughnut",
+                  startAngle:20,
+                  toolTipContent: "{label}: {y} - <strong>#percent%</strong>",
+                  indexLabel: "",
+                  dataPoints: [
+                    {  y: 67, label: "Consumi", color: "#e74c3c",  },
+                    {  y: 28, label: "Compensi", color: "#2ecc71" }
+                  ]
+                }
+                ]
+              });
+
+              
+              chart.render();
+              
+
+                $('#usermodal').modal('show');
+            });
+
+
+            $("#compare").click(function(){
+                window.location.href = '../compare/';
+            });
+
+             $("#owl-demo").owlCarousel({
+             
+                  navigation : true, // Show next and prev buttons
+                  slideSpeed : 300,
+                  paginationSpeed : 400,
+                  singleItem:true
+             
+                  // "singleItem:true" is a shortcut for:
+                  // items : 1, 
+                  // itemsDesktop : false,
+                  // itemsDesktopSmall : false,
+                  // itemsTablet: false,
+                  // itemsMobile : false
+             
+              });
+
+             $("#f1_card").click(function(){
+                $('#settingsmodal').modal('show');
+             });
+
+
+             $("img.user").css("background-color", "#000");
+         };
+
+    </script>
+
+
+   
+</head>
+<body>
+    <div class="sfondo"></div>
+
+    <div class="container" ng-controller = "DrawCtrl"
+         use = "https://raw.githubusercontent.com/filipkis/endev/master/examples/data-tables/civis-user.xml"
+         data-from = "civis.user user" 
+         data-where = "user.userID = '387051' AND user.token = '688b026c-665f-4994-9139-6b21b13fbeee'"data-provider="yql">
+        <div class="row rowcontainer">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="panel panel-default user">
+                    <div class="panel-body user_body">
+                        <center>
+                            <div id="f1_container">
+                                <div id="f1_card" class="shadow">
+                                  <div class="front face">
+                                    <img class="user" src="../images/emma.jpg"/>
+                                  </div>
+                                  <div class="back face center">
+                                    <img class="user" src="../images/settings.png"/>
+                                  </div>
+                                </div>
+                                </div>
+                            
+                            <h2>Benvenuta Emma Watson!</h2>
+                        </center>
+
+                        <div class="row" style="padding-left:15px; margin-top:-40px">
+                            <div class="col-md-8">
+                                <div class="panel panel-primary torta" id="panel_torta">
+                                    <div class="panel-heading">Status</div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div id="torta_container" class="grafico"></div>
+                                                <h4 class="title">Ecco il Grafico dei tuoi consumi e compensi dell'ultimo mese</h4>
+                                            </div>
+                                            <div class="col-md-6"
+                                                  use="https://raw.githubusercontent.com/filipkis/endev/master/examples/data-tables/civis.xml"
+                                                  data-from = "civis.IntervalReading reading"
+                                                  data-where = "reading.userID = user.userID AND reading.token = user.token AND reading.from = '01-Apr-13 00:00 AM' AND reading.to = '30-Apr-13 00:00 AM' AND reading.res = 'monthly'"
+                                                data-provider = "yql">
+                                                <div class="panel panel-success" style="width:100%">
+                                                  <div class="panel-body">
+                                                    <img class="arrow" src="../images/arrow-up.png"/><h4>Compensi:  {{reading.value / 1000}}kW</h4>
+                                                  </div>
+                                                </div>
+                                                <div class="panel panel-danger" style="width:100%">
+                                                  <div class="panel-body">
+                                                    <img class="arrow" src="../images/arrow-down.png"/><h4>Consumi: {{(reading.value / 1000).toFixed(1)}}kW</h4>
+                                                  </div>
+                                                </div>
+                                                <div class="panel panel-warning" style="width:100%">
+                                                  <div class="panel-body">
+                                                    <img class="sun" src="../images/sun.png"/><h4>Produzione attuale: 2KW/h</h4>
+                                                  </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-primary" id="panel_linee">
+                                    <div class="panel-heading">I miei consumi</div>
+                                  <div class="panel-body">
+                                    <div id="linee_container" style="height: 300px; width: 100%;"
+                                          use="https://raw.githubusercontent.com/filipkis/endev/master/examples/data-tables/civis.xml"
+                                         data-from = "civis reading"
+                                         data-where = "reading.userID = user.userID AND reading.token = user.token AND reading.from = '01-Apr-13 00:00 AM' AND reading.to = '30-Apr-13 00:00 AM' AND reading.res = 'daily'"
+                                         data-provider = "yql" data-loaded = "draw(reading)"></div>
+                                  </div>
+                                </div>
+
+                                    <!--<div id="classifica_container" style="height: 300px; width: 100%;"></div>-->
+                                    <div class="panel-body store_body">
+                                    <div class="list-group">
+                                      <p href="#" class="list-group-item active" style="margin-left:1px; margin-right:1px;">
+                                        Classifica
+                                      </p>
+                                      <div  id="lista_utenti">
+                                       <a href="#" class="list-group-item utente"
+                                          ng-repeat = "user in $stage.users | ">
+                                            <div class="row utente">
+                                                <div class="col-md-2">
+                                                    <img class="utente" src="../images/kaley.jpg"/>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <h4 style="margin-bottom:0">Kaley Cuoco</h4>
+                                                    <p>1° Classificata/o</p>
+                                                </div>
+                                                <div class="col-md-2 centerText">
+                                                    <img class="arrow" src="../images/arrow-up.png"/>
+                                                    <p class="kw">1KW</p>
+                                                </div>
+                                                <div class="col-md-2 centerText">
+                                                    <img class="arrow" src="../images/arrow-down.png"/>
+                                                    <p class="kw">100KW</p>
+                                                </div>
+                                            </div>
+                                      </a>
+                                      <a href="#" class="list-group-item utente">
+                                            <div class="row utente">
+                                                <div class="col-md-2">
+                                                    <img class="utente" src="../images/bobby.jpg"/>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <h4 style="margin-bottom:0">Bobby Munson</h4>
+                                                    <p>2° Classificata/o</p>
+                                                </div>
+                                                <div class="col-md-2 centerText">
+                                                    <img class="arrow" src="../images/arrow-up.png"/>
+                                                    <p class="kw">1KW</p>
+                                                </div>
+                                                <div class="col-md-2 centerText">
+                                                    <img class="arrow" src="../images/arrow-down.png"/>
+                                                    <p class="kw">100KW</p>
+                                                </div>
+                                            </div>
+                                      </a>
+                                      <a href="#" class="list-group-item utente">
+                                            <div class="row utente">
+                                                <div class="col-md-2">
+                                                    <img class="utente" src="../images/keira.jpg"/>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <h4 style="margin-bottom:0">Keira Knightley</h4>
+                                                    <p>3° Classificata/o</p>
+                                                </div>
+                                                <div class="col-md-2 centerText">
+                                                    <img class="arrow" src="../images/arrow-up.png"/>
+                                                    <p class="kw">1KW</p>
+                                                </div>
+                                                <div class="col-md-2 centerText">
+                                                    <img class="arrow" src="../images/arrow-down.png"/>
+                                                    <p class="kw">100KW</p>
+                                                </div>
+                                            </div>
+                                      </a>
+                                      <a href="#" class="list-group-item utente">
+                                            <div class="row utente">
+                                                <div class="col-md-2">
+                                                    <img class="utente" src="../images/tig.jpg"/>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <h4 style="margin-bottom:0">Tig Trager</h4>
+                                                    <p>4° Classificata/o</p>
+                                                </div>
+                                                <div class="col-md-2 centerText">
+                                                    <img class="arrow" src="../images/arrow-up.png"/>
+                                                    <p class="kw">1KW</p>
+                                                </div>
+                                                <div class="col-md-2 centerText">
+                                                    <img class="arrow" src="../images/arrow-down.png"/>
+                                                    <p class="kw">100KW</p>
+                                                </div>
+                                            </div>
+                                      </a>
+                                      <a href="#" class="list-group-item utente">
+                                            <div class="row utente">
+                                                <div class="col-md-2">
+                                                    <img class="utente" src="../images/emma.jpg"/>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <h4 style="margin-bottom:0">Emma Watson</h4>
+                                                    <p>5° Classificata/o</p>
+                                                </div>
+                                                <div class="col-md-2 centerText">
+                                                    <img class="arrow" src="../images/arrow-up.png"/>
+                                                    <p class="kw">1KW</p>
+                                                </div>
+                                                <div class="col-md-2 centerText">
+                                                    <img class="arrow" src="../images/arrow-down.png"/>
+                                                    <p class="kw">100KW</p>
+                                                </div>
+                                            </div>
+                                      </a>
+                                  </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-4">
+                                <div class="panel panel-default hint postit">
+                                    <div class="panel-body">
+                                        <img src="../images/exclamation.png"/>
+                                        <div id="owl-demo" class="owl-carousel owl-theme">
+ 
+                                          <div class="item">
+                                            <h4>Titolo</h4>
+                                            <p>Il mese scorso hai fatto molto melgio... fai schifo!</p>
+                                          </div>
+                                          <div class="item">
+                                            <h4>Titolo</h4>
+                                            <p>Il mese scorso hai fatto molto melgio... fai schifo!</p>
+                                          </div>
+                                         
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <h4 class="centerText">Hai 7 crediti</h4>
+                                        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                                            <div class="btn-group" role="group" aria-label="...">
+                                                <button type="button" class="btn btn-default mybtn">More Credits</button>
+                                            </div>
+                                            <div class="btn-group" role="group" aria-label="...">
+                                                <button type="button" class="btn btn-default mybtn">Risparmia</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                  <div class="panel-body store_body">
+                                    <div class="list-group">
+                                      <a href="#" class="list-group-item active" style="margin-left:1px; margin-right:1px;">
+                                        Store
+                                      </a>
+                                       <a href="#" class="list-group-item">
+                                            <img class="arrow" style="margin-top:13px" src="../images/arrow-up.png"/>
+                                            <h4 style="margin-bottom:0">Compensi: 1KW</h4>
+                                            <p>100 €</p>
+                                      </a>
+                                      <a href="#" class="list-group-item">
+                                            <img class="arrow" style="margin-top:13px" src="../images/arrow-up.png"/>
+                                            <h4 style="margin-bottom:0">Compensi: 1KW</h4>
+                                            <p>100 €</p>
+                                      </a> 
+                                      <a href="#" class="list-group-item">
+                                            <img class="arrow" style="margin-top:13px" src="../images/arrow-up.png"/>
+                                            <h4 style="margin-bottom:0">Compensi: 1KW</h4>
+                                            <p>100 €</p>
+                                      </a> 
+                                      <a href="#" class="list-group-item">
+                                            <img class="arrow" style="margin-top:13px" src="../images/arrow-up.png"/>
+                                            <h4 style="margin-bottom:0">Compensi: 1KW</h4>
+                                            <p>100 €</p>
+                                      </a> 
+                                      <a href="#" class="list-group-item">
+                                            <img class="arrow" style="margin-top:13px" src="../images/arrow-up.png"/>
+                                            <h4 style="margin-bottom:0">Compensi: 1KW</h4>
+                                            <p>100 €</p>
+                                      </a> 
+                                      <a href="#" class="list-group-item">
+                                            <img class="arrow" style="margin-top:13px" src="../images/arrow-up.png"/>
+                                            <h4 style="margin-bottom:0">Compensi: 1KW</h4>
+                                            <p>100 €</p>
+                                      </a> 
+                                      <a href="#" class="list-group-item">
+                                            <img class="arrow" style="margin-top:13px" src="../images/arrow-up.png"/>
+                                            <h4 style="margin-bottom:0">Compensi: 1KW</h4>
+                                            <p>100 €</p>
+                                      </a>
+                                      <a href="#" class="list-group-item">
+                                            <img class="arrow" style="margin-top:13px" src="../images/arrow-up.png"/>
+                                            <h4 style="margin-bottom:0">Compensi: 1KW</h4>
+                                            <p>100 €</p>
+                                      </a>
+                                      <a href="#" class="list-group-item">
+                                            <img class="arrow" style="margin-top:13px" src="../images/arrow-up.png"/>
+                                            <h4 style="margin-bottom:0">Compensi: 1KW</h4>
+                                            <p>100 €</p>
+                                      </a>
+                                      <a href="#" class="list-group-item">
+                                            <h4 style="margin-bottom:0">Mostra altro</h4>
+                                        </a>
+                                    </div>
+                                  </div>
+
+                            </div>
+                        </div>
+
+
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="usermodal" tabindex="-1" role="dialog" aria-labelledby="purchaseLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="purchaseLabel">Kaley Cuoco</h4>
+                </div>
+                <div class="modal-body" style="height:450px">
+                    <center>
+                        <img class="user" src="../images/kaley.jpg"/>
+                    </center>
+                    <div class="row">
+                    </div>
+                    <div class="row">
+                    <div class="col-md-4">
+                        <div id="modal_torta_container"></div>
+                    </div>
+                    <div class="col-md-2"></div>
+                        <div class="col-md-6">
+                            <br><br>
+                            <div class="panel panel-success">
+                              <div class="panel-body">
+                                <img class="arrow" src="../images/arrow-up.png"/><h4>Compensi: 1KW</h4>
+                              </div>
+                            </div>
+                            <div class="panel panel-danger">
+                              <div class="panel-body">
+                                <img class="arrow" src="../images/arrow-down.png"/><h4>Consumi: 100KW</h4>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="compare">Confronta</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="settingsmodal" tabindex="-1" role="dialog" aria-labelledby="purchaseLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="purchaseLabel">Settings</h4>
+                </div>
+                <div class="modal-body" style="padding:40px;">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Username</label>
+                        <input type="text" class="form-control" id="uername" placeholder="Enter username">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Password</label>
+                        <input type="password" class="form-control" id="uername" placeholder="Enter password">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Confirm Password</label>
+                        <input type="password" class="form-control" id="uername" placeholder="Confirm password">
+                    </div>
+                     <div class="form-group">
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="color" for="exampleInputEmail1">Confirm Password</label>
+                            </div>
+                            <div class="col-md-1 color" style=" height:0; margin:0 2px; background-color: #27ae60;  padding-bottom: calc(100%/12);
+                            cursor: pointer; border-radius:50%;"></div>
+                            <div class="col-md-1 color" style=" height:0; margin:0 2px; background-color: #2980b9;  padding-bottom: calc(100%/12);
+                            cursor: pointer; border-radius:50%; -webkit-filter: grayscale(100%);"></div>
+                            <div class="col-md-1 color" style=" height:0; margin:0 2px; background-color: #8e44ad;  padding-bottom: calc(100%/12);
+                            cursor: pointer; border-radius:50%; -webkit-filter: grayscale(100%);"></div>
+                            <div class="col-md-1 color" style=" height:0; margin:0 2px; background-color: #d35400;  padding-bottom: calc(100%/12);
+                            cursor: pointer; border-radius:50%; -webkit-filter: grayscale(100%);"></div>
+                            <div class="col-md-1 color" style=" height:0; margin:0 2px; background-color: #c0392b;  padding-bottom: calc(100%/12);
+                            cursor: pointer; border-radius:50%; -webkit-filter: grayscale(100%);"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="compare">Save</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="credits" tabindex="-1" role="dialog" aria-labelledby="purchaseLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="purchaseLabel">Kaley Cuoco</h4>
+                </div>
+                <div class="modal-body" style="height:450px">
+                    <center>
+                        <img class="user" src="../images/kaley.jpg"/>
+                    </center>
+                    <div class="row">
+                    </div>
+                    <div class="row">
+                    <div class="col-md-4">
+                        <div id="modal_torta_container"></div>
+                    </div>
+                    <div class="col-md-2"></div>
+                        <div class="col-md-6">
+                            <br><br>
+                            <div class="panel panel-success">
+                              <div class="panel-body">
+                                <img class="arrow" src="../images/arrow-up.png"/><h4>Compensi: 1KW</h4>
+                              </div>
+                            </div>
+                            <div class="panel panel-danger">
+                              <div class="panel-body">
+                                <img class="arrow" src="../images/arrow-down.png"/><h4>Consumi: 100KW</h4>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="compare">Confronta</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    
+     <script>
+      endev.app.controller("DrawCtrl",function($scope){
+         $scope.draw = drawChart;
+         $scope.text = "Hello world";
+      });
+    </script>
+    
+    
+    <!-- Loading the javaScript at the end of the page -->
+    <script type="text/javascript" src="../js/bootstrap.js">alert("ok");</script>
+
+</body>
+</html>
